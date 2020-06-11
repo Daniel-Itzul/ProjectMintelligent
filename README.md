@@ -1,0 +1,2 @@
+# ProjectMintelligent
+Mintelligent APP
