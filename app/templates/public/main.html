@@ -1,0 +1,23 @@
+{% extends "public/templates/main_template.html" %}
+
+{% block title %}Mint Explorer{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Explore</h1>
+      <form action="/main" method="POST">
+
+        <div class="form-group">
+          <label>What Amazon category page you want to explore</label>
+          <input type="text" class="form-control" id="target_page" name="target_page" placeholder="Paste the URL of your category page">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
