@@ -5,7 +5,7 @@ function submit_request() {
         url:page.value,
         elementSet:{etag:"li",eclass:"zg-item-immersion"},
         elementDef:[
-            {elementName:"Rank",elementTag:"span",elementClass:"zg-bexadge-text",extractType:"0",elementExtract:"text"},
+            {elementName:"Rank",elementTag:"span",elementClass:"zg-badge-text",extractType:"0",elementExtract:"text"},
             {elementName:"Url",elementTag:"a",elementClass:"a-link-normal",extractType:"1",elementExtract:"href"},
             {elementName:"Description",elementTag:"div",elementClass:"p13n-sc-truncate",extractType:"0",elementExtract:"text"},
             {elementName:"Price",elementTag:"span",elementClass:"p13n-sc-price",extractType:"0",elementExtract:"text"},
