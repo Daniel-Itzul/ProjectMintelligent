@@ -11,10 +11,10 @@
       <hr>
       <div class="mb-3">
         <div class="form-group">
-          <label>What Amazon category page you want to explore</label>
+          <label>What Amazon category page you want to explore. Works for Best Sellers, New Releases, Movers and Shakers, etc.</label>
           <input type="text" class="form-control" id="target_page" name="target_page" placeholder="Paste the URL of your category page">
         </div>
-        <button class="btn btn-primary" id="submit" onclick="submit_request();">Submit message</button>
+        <button class="btn btn-primary" id="submit" onclick="submit_request();">Explore Category</button>
         <hr>
         <div id="resultSpace">
         </div>
@@ -25,5 +25,5 @@
 
 {% endblock %}
 {% block script %}
-  <script src="{{ url_for('static', filename='js/requestCategory.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/requestCategory.js') }}"></script>
 {% endblock %}
