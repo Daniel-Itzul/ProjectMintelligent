@@ -1,3 +1,4 @@
+// this is purely a test file it has useful data to test
 function generate_table() {
     var data = {gridElements:[
             {Rank:"#1", AMZID:"B07W6ZZZWK", Description:"TONOR PC Microphone USB Computer Condenser Gaming …aming for iMac PC Laptop Desktop Windows Computer", Price: "£40.99", Stars: "4.5 out of 5 stars"},
