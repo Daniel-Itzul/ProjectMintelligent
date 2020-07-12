@@ -14,11 +14,10 @@
           <label>What Amazon category page you want to explore</label>
           <input type="text" class="form-control" id="target_page" name="target_page" placeholder="Paste the URL of your category page">
         </div>
-        <div class="form-group">
-          <label>Message</label>
-          <textarea class="form-control" id="message" cols="30" rows="3" placeholder="The Category"></textarea>
-        </div>
         <button class="btn btn-primary" id="submit" onclick="submit_request();">Submit message</button>
+        <hr>
+        <div id="resultSpace">
+        </div>
       </div>
     </div>
   </div>
@@ -26,5 +25,5 @@
 
 {% endblock %}
 {% block script %}
-<script src="{{ url_for('static', filename='js/requestCategory.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/requestCategory.js') }}"></script>
 {% endblock %}
