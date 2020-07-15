@@ -29,6 +29,12 @@ def processArray(arrayPass):
     response = arrayPass
     for element in response["gridElements"]:
         element["AMZID"] = scrapmaster.getLinkSection(element["Url"],"dp/","?")
+        element["Rank"] =  element["Rank"][1:len(element["Rank"])]
+        if element["Price"] != None: 
+            element["Currency"] = element["Price"][0:1]
+            element["Price"] = element["Price"][1:len(element["Price"])]
+        if element["Stars"] != None:
+            element["Stars"] = element["Stars"][0:3]
     return response
 
 def validateURL(url):

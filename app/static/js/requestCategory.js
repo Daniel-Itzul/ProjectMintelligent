@@ -17,8 +17,8 @@ function submit_request() {
       return;
     }
     response.json().then(function (data) {
-      //console.log(data);
-      buildTable(data["gridElements"]);
+      console.log(data);
+      //buildTable(data["gridElements"]);
     });
   })
   .catch(function (error) {
