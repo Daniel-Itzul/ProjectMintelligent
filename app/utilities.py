@@ -33,8 +33,13 @@ def processArray(arrayPass):
         if element["Price"] != None: 
             element["Currency"] = element["Price"][0:1]
             element["Price"] = element["Price"][1:len(element["Price"])]
+        else:
+            element["Currency"] = "N/A"
+            element["Price"] = "N/A"
         if element["Stars"] != None:
             element["Stars"] = element["Stars"][0:3]
+        else:
+            element["Stars"] = "NA"
     return response
 
 def validateURL(url):

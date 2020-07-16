@@ -17,8 +17,8 @@ function submit_request() {
       return;
     }
     response.json().then(function (data) {
-      console.log(data);
-      //buildTable(data["gridElements"]);
+      //console.log(data);
+      buildTable(data["gridElements"]);
     });
   })
   .catch(function (error) {
@@ -34,6 +34,7 @@ function buildTable(data){
                       <th>Rank</th>
                       <th>AMZID</th>
                       <th>Description</th>
+                      <th>Currency</th>
                       <th>Price</th>
                       <th>Stars</th>
                   </tr>`;
@@ -43,6 +44,7 @@ function buildTable(data){
                       <td>${data[i].Rank}</td>
                       <td>${data[i].AMZID}</td>
                       <td>${data[i].Description}</td>
+                      <td>${data[i].Currency}</td>
                       <td>${data[i].Price}</td>
                       <td>${data[i].Stars}</td>
                 </tr>`
