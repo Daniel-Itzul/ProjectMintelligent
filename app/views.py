@@ -1,7 +1,7 @@
 from app import app
 from flask import render_template
 from flask import request, redirect, jsonify, make_response
-from app import utilities
+from app import mainUtils
 import scrapmaster
 import json
 
@@ -16,6 +16,6 @@ def main():
 @app.route("/main/request-category", methods=["POST"])
 def create_entry():
     req = request.get_json()
-    response = utilities.prepareResponse(req["url"])
+    response = mainUtils.prepareResponse(req["url"])
     res = make_response(json.dumps(response), 200)
     return res
