@@ -33,4 +33,8 @@ function buildTable(data){
                   </tr>`
         table.innerHTML += row
    } 
+   $(document).ready( function () {
+        $('#myTable').DataTable();
+    } );
 }
+

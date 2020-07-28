@@ -19,3 +19,7 @@ def create_entry():
     response = mainUtils.prepareResponse(req["url"])
     res = make_response(json.dumps(response), 200)
     return res
+
+@app.route('/test')
+def test():
+    return render_template("public/test-table.html")
