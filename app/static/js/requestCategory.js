@@ -30,15 +30,20 @@ function buildTable(data){
   document.getElementById("resultSpace").innerHTML =  `<table id="myTable" class="table table-striped">
                                                        </table>`;
   var table = document.getElementById('myTable');
-  var rowHeader = `<tr class="bg-info">
-                      <th>Rank</th>
-                      <th>AMZID</th>
-                      <th>Description</th>
-                      <th>Currency</th>
-                      <th>Price</th>
-                      <th>Stars</th>
-                  </tr>`;
+  var rowHeader = `<thead>
+                    <tr class="bg-info">
+                        <th>Rank</th>
+                        <th>AMZID</th>
+                        <th>Description</th>
+                        <th>Currency</th>
+                        <th>Price</th>
+                        <th>Stars</th>
+                    </tr>
+                  </thead>
+                  <tbody id="myTableBody">
+                  </tbody>`;
   table.innerHTML += rowHeader;
+  tableBody = document.getElementById('myTableBody')
   for (var i = 0; i < data.length; i++){
       var row = `<tr>
                       <td>${data[i].Rank}</td>
@@ -48,6 +53,19 @@ function buildTable(data){
                       <td>${data[i].Price}</td>
                       <td>${data[i].Stars}</td>
                 </tr>`
-      table.innerHTML += row
- } 
+      tableBody.innerHTML += row
+ }
+formatTable('#myTable');
 }
+function formatTable(tableName) {
+  $(function() {
+      $(tableName).DataTable( {
+          dom: 'Bfrtip',
+          buttons: [
+              'copyHtml5',
+              'csvHtml5',
+              'pdfHtml5'
+          ]
+      } );
+  } );
+};

@@ -5,8 +5,12 @@
     <div class="row">
         <div class="col">
             <h1>Table Sample</h1>
-            <div class="container">
-                <table id="example" class="display" style="width:100%">
+            <div id="buttonArea" class="container">
+                <button class="btn btn-primary" id="submit" onclick="generate_table();">Populate</button>
+                <button class="btn btn-primary" id="submit" onclick="formatTable('#myTable');">Format</button>
+            </div>
+            <div id="resultSpace" class="container">
+               <!--<table id="example" class="display" style="width:100%">
         <thead>
             <tr>
                 <th>Name</th>
@@ -485,23 +489,13 @@
                 <th>Salary</th>
             </tr>
         </tfoot>
-                </table>
+                </table>-->
             </div>
         </div>
     </div>
 </div>
 {% endblock %}
+
 {% block script %}
-<script>    
-$(document).ready(function() {
-        $('#example').DataTable( {
-            dom: 'Bfrtip',
-            buttons: [
-                'copyHtml5',
-                'csvHtml5',
-                'pdfHtml5'
-            ]
-        } );
-    } );
-</script>
+<script src="{{ url_for('static', filename='js/tableTest.js') }}"></script>
 {% endblock %}

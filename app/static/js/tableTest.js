@@ -1,4 +1,16 @@
 // this is purely a test file it has useful data to test
+function formatTable(tableName) {
+    $(function() {
+        $(tableName).DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        } );
+    } );
+};
 function generate_table() {
     var data = {gridElements:[
             {Rank:"#1", AMZID:"B07W6ZZZWK", Description:"TONOR PC Microphone USB Computer Condenser Gaming …aming for iMac PC Laptop Desktop Windows Computer", Price: "£40.99", Stars: "4.5 out of 5 stars"},
@@ -12,16 +24,19 @@ function generate_table() {
 }
 
 function buildTable(data){
-    document.getElementById("resultSpace").innerHTML =  `<table id="myTable" class="table table-striped">
+    document.getElementById("resultSpace").innerHTML =  `<table id="myTable">
                                                          </table>`;
     var table = document.getElementById('myTable');
-    var rowHeader = `<tr class="bg-info">
-                        <th>Rank</td>
-                        <th>AMZID</td>
-                        <th>Description</td>
-                        <th>Price</td>
-                        <th>Stars</td>
-                    </tr>`;
+    var rowHeader = `
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>AMZID</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Stars</th>
+                        </tr>
+                    </thead>`;
     table.innerHTML += rowHeader;
     for (var i = 0; i < data.length; i++){
         var row = `<tr>
@@ -33,8 +48,5 @@ function buildTable(data){
                   </tr>`
         table.innerHTML += row
    } 
-   $(document).ready( function () {
-        $('#myTable').DataTable();
-    } );
 }
 
