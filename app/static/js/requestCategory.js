@@ -1,7 +1,6 @@
 $(function() {
   let validLink = /^https:\/\/[wW]{3}\.amazon/
   const submit_requestButton = document.getElementById("submit")
-  //submit_requestButton.disabled = true
   document.getElementById("target_page").addEventListener("keyup", function() {
     const nameInput = document.getElementById("target_page").value;
     if (nameInput != "" && nameInput.match(validLink)) {
@@ -82,6 +81,7 @@ function formatTable(tableName) {
   $(function() {
       $(tableName).DataTable( {
           dom: 'Bfrtip',
+          ordering:  false,
           buttons: [
               'copyHtml5',
               'csvHtml5',
