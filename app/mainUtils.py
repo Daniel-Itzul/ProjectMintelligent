@@ -21,7 +21,10 @@ def prepareResponse(url):
     url = validateURL(url)
     request["url"] = url
     response = json.loads(scrapmaster.scrapGrid(request))
-    response = processArray(response)
+    if "gridElements" in response.keys():
+        response = processArray(response)
+    else:
+        response = processException(response["exception"]["code"])   
     return response
 
 
@@ -44,3 +47,10 @@ def processArray(arrayPass):
 
 def validateURL(url):
     return url
+
+def processException(exception):
+    exceptionSwitch = {
+        "00":{"exception":{"code":"00","description":"The URL you've entered is not valid, please review and try again, make sure that the category shows in your browser when you paste this URL in a different browser tab."}},
+        "06":{"exception":{"code":"02","description":"The URL you've entered doesn't appear to be a category page, a category page is either a Best Sellers, New Releases or Movers and Shakers page"}}
+    }
+    return exceptionSwitch[exception]

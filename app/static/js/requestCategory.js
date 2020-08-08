@@ -1,3 +1,19 @@
+$(function() {
+  let validLink = /^https:\/\/[wW]{3}\.amazon/
+  const submit_requestButton = document.getElementById("submit")
+  //submit_requestButton.disabled = true
+  document.getElementById("target_page").addEventListener("keyup", function() {
+    const nameInput = document.getElementById("target_page").value;
+    if (nameInput != "" && nameInput.match(validLink)) {
+        document.getElementById("submit").removeAttribute("disabled");
+        displayalert("All set","00");
+    } else {
+        document.getElementById("submit").setAttribute("disabled", null);
+        displayalert("Only Amazon Category Pages are supported, your link should start by https://www.amazon","01");
+    }
+  });
+})
+
 function submit_request() {
   const targetPage = document.getElementById("target_page");
   var entry = {url:""};
@@ -18,7 +34,11 @@ function submit_request() {
     }
     response.json().then(function (data) {
       //console.log(data);
-      buildTable(data["gridElements"]);
+      if ("exception" in data){
+        displayalert(data["exception"]["description"],"02");
+      } else {
+        buildTable(data["gridElements"]);
+      }
     });
   })
   .catch(function (error) {
@@ -54,9 +74,10 @@ function buildTable(data){
                       <td>${data[i].Stars}</td>
                 </tr>`
       tableBody.innerHTML += row
- }
-formatTable('#myTable');
+  }
+  formatTable('#myTable');
 }
+
 function formatTable(tableName) {
   $(function() {
       $(tableName).DataTable( {
@@ -69,3 +90,17 @@ function formatTable(tableName) {
       } );
   } );
 };
+
+function displayalert(alert, alertClass){
+  alertTypes = {"00":`<div class="alert alert-success" role="alert">
+                        ${alert}
+                      </div>`,
+                "01":`<div class="alert alert-warning" role="alert">
+                        ${alert}
+                      </div>`,
+                "02":`<div class="alert alert-danger" role="alert">
+                        ${alert}
+                      </div>`
+  }
+  document.getElementById("resultSpace").innerHTML =   alertTypes[alertClass];
+}
