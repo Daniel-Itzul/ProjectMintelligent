@@ -2,16 +2,15 @@ from app import app
 from flask import render_template
 from flask import request, redirect, jsonify, make_response
 from app import mainUtils
-import scrapmaster
 import json
 
 @app.route('/')
 def index():
     return render_template("public/index.html")
 
-@app.route('/main')
+@app.route('/Xplorer')
 def main():
-    return render_template("public/main.html")
+    return render_template("public/xplorer.html")
 
 @app.route("/main/request-category", methods=["POST"])
 def create_entry():
