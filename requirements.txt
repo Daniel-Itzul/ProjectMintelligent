@@ -16,7 +16,7 @@ MarkupSafe==1.1.1
 mccabe==0.6.1
 pylint==2.5.3
 requests==2.24.0
-scrapmaster @ file:///Users/danielherrera/Development/scrapmaster
+scrapmaster @ git+https://github.com/Daniel-Itzul/ScrapMaster.git@e61bcefb0796ef92eafd5f5c6a3114eb1e0bfa35
 six==1.15.0
 soupsieve==2.0.1
 toml==0.10.1
