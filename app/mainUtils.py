@@ -18,9 +18,8 @@ AMZN_CAT_LIST_INT = {
 
 def prepareResponse(url):
     request = AMZN_CAT_LIST_INT
-    url = validateURL(url)
     request["url"] = url
-    response = json.loads(scrapmaster.scrapGrid(request))
+    response = json.loads(scrapmaster.scrapGrid(json.dumps(request)))
     if "gridElements" in response.keys():
         response = processArray(response)
     else:
@@ -31,7 +30,7 @@ def prepareResponse(url):
 def processArray(arrayPass):
     response = arrayPass
     for element in response["gridElements"]:
-        element["AMZID"] = scrapmaster.getLinkSection(element["Url"],"dp/","?")
+        element["AMZID"] = scrapmaster.getStringSection(element["Url"],"dp/","?")
         element["Rank"] =  element["Rank"][1:len(element["Rank"])]
         if element["Price"] != None: 
             element["Currency"] = element["Price"][0:1]
@@ -44,9 +43,6 @@ def processArray(arrayPass):
         else:
             element["Stars"] = "NA"
     return response
-
-def validateURL(url):
-    return url
 
 def processException(exception):
     exceptionSwitch = {
