@@ -8,7 +8,7 @@ import json
 def index():
     return render_template("public/index.html")
 
-@app.route('/Xplorer')
+@app.route('/xplorer')
 def main():
     return render_template("public/xplorer.html")
 
@@ -19,6 +19,6 @@ def create_entry():
     res = make_response(json.dumps(response), 200)
     return res
 
-@app.route('/test')
+@app.route('/feedback')
 def test():
-    return render_template("public/test-table.html")
+    return render_template("public/feedback.html")
