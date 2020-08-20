@@ -20,5 +20,9 @@ def create_entry():
     return res
 
 @app.route('/feedback')
-def test():
+def feedback():
     return render_template("public/feedback.html")
+
+@app.route('/contact')
+def contact():
+    return render_template("public/contact.html")
