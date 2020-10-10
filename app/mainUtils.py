@@ -1,6 +1,7 @@
 from app import app
 import scrapmaster
 import json
+import re
 
 AMZN_CAT_LIST_INT = {
                     "type":"1",
@@ -26,6 +27,14 @@ def prepareResponse(url):
         response = processException(response["exception"]["code"])   
     return response
 
+def filterNumbers (baseString):
+    numberPart = re.findall(r"\d+.\d+",baseString)
+    currencyPart = re.findall(r"\D+[^\.,0-9]|[€$￥*]",baseString)
+    if len(numberPart) < 1:
+            numberPart = ["N/A"]
+    if len(currencyPart) < 1:
+        currencyPart = ["Region Not Fully Supported"]
+    return numberPart[0], currencyPart[0]
 
 def processArray(arrayPass):
     response = arrayPass
@@ -33,13 +42,13 @@ def processArray(arrayPass):
         element["AMZID"] = scrapmaster.getStringSection(element["Url"],"dp/","?")
         element["Rank"] =  element["Rank"][1:len(element["Rank"])]
         if element["Price"] != None: 
-            element["Currency"] = element["Price"][0:1]
-            element["Price"] = element["Price"][1:len(element["Price"])]
+            element["Currency"] = filterNumbers(element["Price"])[1]
+            element["Price"] = filterNumbers(element["Price"])[0]
         else:
             element["Currency"] = "N/A"
             element["Price"] = "N/A"
         if element["Stars"] != None:
-            element["Stars"] = element["Stars"][0:3]
+            element["Stars"] = filterNumbers(element["Stars"])[0]
         else:
             element["Stars"] = "NA"
     return response
